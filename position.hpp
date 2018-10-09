@@ -121,11 +121,12 @@ namespace GameSolver { namespace Connect4 {
        *         Caller can check if the move sequence was valid by comparing the number of
        *         processed moves to the length of the sequence.
        */
-      unsigned int play(std::string seq)
+      unsigned int play(std::string seq)//modified this section;
       {
         for(unsigned int i = 0; i < seq.size(); i++) {
           int col = seq[i] - '1';
-          if(col < 0 || col >= Position::WIDTH || !canPlay(col) || isWinningMove(col)) return i; // invalid move
+          if(col < 0 || col >= Position::WIDTH || !canPlay(col)) return i; // invalid move
+          if (isWinningMove(col)) return 8;
           playCol(col);
         }
         return seq.size();
